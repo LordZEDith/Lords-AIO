@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Midlane">
+      <UniqueIdentifier>{c630ee66-9856-470e-b269-7ee8c4f7482c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Toplane">
+      <UniqueIdentifier>{e798014e-70c7-4e62-9201-a01d2f7a5d16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Jungle">
+      <UniqueIdentifier>{204f0463-bc45-4074-aa88-49636505d70a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Support">
+      <UniqueIdentifier>{8c3926eb-38a9-405d-9532-e0f3d153d1cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ADC">
+      <UniqueIdentifier>{42b9feb5-e6cc-4f24-b3ae-3ff9dc9c86ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SDK">
+      <UniqueIdentifier>{29f9953f-59a2-4ff5-bc94-86755dc162e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Custom">
+      <UniqueIdentifier>{e7006e38-1fa6-4d2a-bcbe-0e49ff29fec2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PluginSDK.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lords AIO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Lords Ahri.h">
+      <Filter>Header Files\Midlane</Filter>
+    </ClInclude>
+    <ClInclude Include="Lords Diana.h">
+      <Filter>Header Files\Midlane</Filter>
+    </ClInclude>
+    <ClInclude Include="Lords Xerath.h">
+      <Filter>Header Files\Midlane</Filter>
+    </ClInclude>
+    <ClInclude Include="Lords Malphite.h">
+      <Filter>Header Files\Toplane</Filter>
+    </ClInclude>
+    <ClInclude Include="Lords Rengar.h">
+      <Filter>Header Files\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="Lords Sona.h">
+      <Filter>Header Files\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="LPPConstants.h">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginData.h">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginSDK.h">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Header Files\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="TextHeader.h">
+      <Filter>Header Files\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseMenu.h">
+      <Filter>Header Files\Custom</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
