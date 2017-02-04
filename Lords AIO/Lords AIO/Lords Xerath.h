@@ -28,6 +28,7 @@ public:
 		//FarmW = WMenu->CheckBox("Use W Farm", true);
 
 		ComboE = EMenu->CheckBox("Use E", true);
+		ComboEA = EMenu->CheckBox("Auto E when Enemy in AA Range", true);
 
 		ComboR = RMenu->CheckBox("Use R(When u select it)", true);
 		//ComboR2 = RMenu->CheckBox("Auto R when Enemy Killable", true);
@@ -103,7 +104,7 @@ public:
 		}
 		if (ComboW->Enabled())
 		{
-			if (W->IsReady() && W->IsReady())
+			if ( W->IsReady())
 			{
 				auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, W->Range());
 				//	if (target != nullptr)
@@ -114,7 +115,7 @@ public:
 		}
 		if (ComboE->Enabled())
 		{
-			if (E->IsReady() && E->IsReady())
+			if ( E->IsReady())
 			{
 				auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, E->Range());
 				//	if (target != nullptr)
@@ -125,6 +126,20 @@ public:
 		}
 	
 	}
+
+	void AutoE()
+	{
+		if (ComboEA->Enabled() && E->IsReady())
+		{
+
+			auto target3 = GTargetSelector->FindTarget(ClosestPriority, SpellDamage, 525);
+			//	if (target != nullptr)
+
+			E->CastOnTarget(target3, 6);
+
+		}
+	}
+
 	bool CastingR()
 	{
 		if (GEntityList->Player()->HasBuff("XerathLocusOfPower2") || GEntityList->Player()->HasBuff("XerathLocusPulse"))

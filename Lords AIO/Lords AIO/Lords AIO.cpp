@@ -152,6 +152,7 @@ public:
 			Xerath().Combo();
 		}
 		Xerath().RunAlways();
+		Xerath().AutoE();
 		 
 	}
 	void AfterAttack(IUnit* Source, IUnit* Target) override
