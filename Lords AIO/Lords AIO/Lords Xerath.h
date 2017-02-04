@@ -28,7 +28,9 @@ public:
 		//FarmW = WMenu->CheckBox("Use W Farm", true);
 
 		ComboE = EMenu->CheckBox("Use E", true);
-		ComboEA = EMenu->CheckBox("Auto E when Enemy in AA Range", true);
+		ComboEA = EMenu->CheckBox("Auto E when Enemy in Selected Range", true);
+		HarassManaE = EMenu->AddInteger("Auto E Range ", 0, 525, 515);
+
 
 		ComboR = RMenu->CheckBox("Use R(When u select it)", true);
 		//ComboR2 = RMenu->CheckBox("Auto R when Enemy Killable", true);
@@ -38,6 +40,7 @@ public:
 		DrawQ = Drawingss->CheckBox("Draw Q", true);
 		DrawW = Drawingss->CheckBox("Draw W", true);
 		DrawE = Drawingss->CheckBox("Draw E", true);
+		DrawEA = Drawingss->CheckBox("Draw Auto E Range", true);
 	}
 	void LoadSpells()
 	{
@@ -132,10 +135,10 @@ public:
 		if (ComboEA->Enabled() && E->IsReady())
 		{
 
-			auto target3 = GTargetSelector->FindTarget(ClosestPriority, SpellDamage, 525);
+			auto target = GTargetSelector->FindTarget(ClosestPriority, SpellDamage, HarassManaE->GetInteger());
 			//	if (target != nullptr)
 
-			E->CastOnTarget(target3, 6);
+			E->CastOnTarget(target,6);
 
 		}
 	}
@@ -172,6 +175,8 @@ public:
 
 			if (E->IsReady() && DrawE->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), E->Range()); }
 
+			if (E->IsReady() && DrawEA->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), HarassManaE->GetInteger()); }
+
 			if (W->IsReady() && DrawW->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), W->Range()); }
 
 		}
@@ -181,7 +186,10 @@ public:
 
 			if (DrawE->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), E->Range()); }
 
+			if (DrawEA->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), HarassManaE->GetInteger()); }
+
 			if (DrawW->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), W->Range()); }
+			 
 		}
 	}
 };

@@ -57,6 +57,7 @@ IMenuOption* DrawReady;
 IMenuOption* DrawQ;
 IMenuOption* DrawW;
 IMenuOption* DrawE;
+IMenuOption* DrawEA;
 IMenuOption* DrawR;
 
 
