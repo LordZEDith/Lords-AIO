@@ -157,6 +157,7 @@
     <ClInclude Include="Lords Malphite.h" />
     <ClInclude Include="Lords Rengar.h" />
     <ClInclude Include="Lords Sona.h" />
+    <ClInclude Include="Lords Warwick.h" />
     <ClInclude Include="Lords Xerath.h" />
     <ClInclude Include="LPPConstants.h" />
     <ClInclude Include="PluginData.h" />

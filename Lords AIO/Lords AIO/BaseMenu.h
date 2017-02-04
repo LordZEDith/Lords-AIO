@@ -19,6 +19,7 @@ IMenu* Drawingss;
 IMenuOption* ComboQ;
 IMenuOption* AutoQ;
 IMenuOption* FarmQ;
+IMenuOption* HarassQ;
 IMenuOption* HarassManaQ;
 IMenuOption* ComboQH;
 IMenuOption* QEnemies;
@@ -35,6 +36,8 @@ IMenuOption* HarassManaW;
 IMenuOption* LaneClearW;
 
 IMenuOption* ComboE;
+IMenuOption* ComboEA;
+IMenuOption* HarassE;
 IMenuOption* HarassManaE;
 IMenuOption* FarmE;
 IMenuOption* FarmEHit;
@@ -47,6 +50,7 @@ IMenuOption* ComboRKill;
 IMenuOption* ComboREnemies;
 IMenuOption* AutoUlt;
 IMenuOption* UltEnemies;
+IMenuOption* UltPercent;
 IMenuOption* LaneClearR;
 
 IMenuOption* DrawReady;

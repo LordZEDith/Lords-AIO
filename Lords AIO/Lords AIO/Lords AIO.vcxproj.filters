@@ -83,5 +83,8 @@
     <ClInclude Include="BaseMenu.h">
       <Filter>Header Files\Custom</Filter>
     </ClInclude>
+    <ClInclude Include="Lords Warwick.h">
+      <Filter>Header Files\Jungle</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

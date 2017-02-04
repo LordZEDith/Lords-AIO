@@ -11,7 +11,7 @@ class Sona
 public:
 	void  Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("Lord's Ahri");
+		MainMenu = GPluginSDK->AddMenu("Lords Sona");
 		QMenu = MainMenu->AddMenu("Q Settings");
 		WMenu = MainMenu->AddMenu("W Settings");
 		EMenu = MainMenu->AddMenu("E Settings");

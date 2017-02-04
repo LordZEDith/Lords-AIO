@@ -7,6 +7,7 @@
 #include "Lords Rengar.h"
 #include "Lords Sona.h"
 #include "Lords Diana.h"
+#include "Lords Warwick.h"
 
 #pragma region Events
 PLUGIN_EVENT(void) OnOrbwalkBeforeAttack(IUnit* Target)
@@ -333,6 +334,53 @@ private:
 	}
 };
 
+class War : public IChampion
+{
+public:
+	virtual void OnLoad() override
+	{
+		JungleLaneSeries();
+		WarwickLoadMessage();
+		Warwick().Menu();
+		Warwick().LoadSpells();
+	}
+	virtual void OnRender() override
+	{
+		Warwick().Drawing();
+	}
+
+	virtual void OnGameUpdate() override
+	{
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			Warwick().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			Warwick().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			Warwick().JungleClear();
+		}
+
+		//Warwick().AutoW();
+	}
+	void OnGapCloser(GapCloserSpell const& Args) override
+	{
+
+	}
+	void AfterAttack(IUnit* Source, IUnit* Target) override
+	{
+
+	}
+private:
+	void WarwickLoadMessage()
+	{
+		GGame->PrintChat("Warwick detected...Loading script");
+	}
+};
+
  
 IChampion* pChampion = nullptr;
 
@@ -367,6 +415,8 @@ void LoadChampion()
 		pChampion = new Reng;
 	else if (szChampion == "Diana")
 		pChampion = new Dian;
+	else if (szChampion == "Warwick")
+		pChampion = new War;
 	else
 	{
 		GGame->PrintChat("Champion not supported!");

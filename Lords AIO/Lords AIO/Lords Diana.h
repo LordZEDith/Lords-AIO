@@ -62,18 +62,6 @@ public:
 		Q->SetOverrideSpeed(1400);
 
 	}
-	bool QBuff()
-	{
-		auto Target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, R->Range());
-		if (Target->HasBuff("dianamoonlight"))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
 	void StealR()
 	{
 		if(UltEnemies->Enabled() && R->IsReady())
@@ -118,7 +106,7 @@ public:
 		{
 
 			for (auto enemy : GEntityList->GetAllHeros(false, true))
-			{
+			{	
 				if (enemy->IsEnemy(GEntityList->Player()) && (GEntityList->Player()->GetPosition() - enemy->GetPosition()).Length() <= E->Range())
 				{
 					if (enemy->HasBuff("dianamoonlight"))
