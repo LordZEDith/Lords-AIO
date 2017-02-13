@@ -45,7 +45,7 @@ public:
 	void LoadSpells()
 	{
 		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, false, false, kCollidesWithNothing);
-		Q->SetCharged(750.f, 1550.f, 1.45f); // Min range: 750 | Max range: 1550 | Total charge time: 3.0 seconds
+		Q->SetCharged(750.f, 1550.f, 1.5f); // Min range: 750 | Max range: 1550 | Total charge time: 3.0 seconds
 		W = GPluginSDK->CreateSpell2(kSlotW, kCircleCast, false, true, static_cast<eCollisionFlags>(kCollidesWithNothing));
 		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, true, false, static_cast<eCollisionFlags>(kCollidesWithMinions | kCollidesWithYasuoWall));
 		R = GPluginSDK->CreateSpell2(kSlotR, kCircleCast, false, false, static_cast<eCollisionFlags>(kCollidesWithNothing));
