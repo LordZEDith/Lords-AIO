@@ -20,8 +20,8 @@ public:
 		ComboQH = QMenu->CheckBox("Use Q | Only target Have E Buff", true);
 		FarmQ = QMenu->CheckBox("Use Q Farm", true);
 
-		ComboW = WMenu->CheckBox("Use W", true);
-		FarmW = WMenu->CheckBox("Use W Farm", true);
+		//ComboW = WMenu->CheckBox("Use W", true);
+		//FarmW = WMenu->CheckBox("Use W Farm", true);
 
 		ComboE = EMenu->CheckBox("Use E", true);
 		HarassE = EMenu->CheckBox("HarassE", true);

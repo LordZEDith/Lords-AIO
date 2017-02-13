@@ -38,7 +38,7 @@ public:
 		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, false, false, static_cast<eCollisionFlags>(kCollidesWithYasuoWall));
 		W = GPluginSDK->CreateSpell2(kSlotW, kLineCast, false, false, static_cast<eCollisionFlags>(kCollidesWithYasuoWall));
 		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, true, false, static_cast<eCollisionFlags>(kCollidesWithMinions | kCollidesWithYasuoWall));
-		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, false, false, static_cast<eCollisionFlags>(kCollidesWithYasuoWall));
+		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, false, false, static_cast<eCollisionFlags>(kCollidesWithNothing));
 		Q->SetOverrideRange(870);
 		W->SetOverrideRange(670);
 		E->SetOverrideRange(950);
@@ -80,10 +80,10 @@ public:
 		{
 			if (R->IsReady())
 			{
-				auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, R->Range());
-				if (target->HealthPercent() <= ComboREnemies->GetFloat())
+				auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, Q->Range());
+				if (target != nullptr && target->IsValidTarget() && !target->IsDead() && target->HealthPercent() <= ComboREnemies->GetFloat())
 				{
-					R->CastOnTarget(target, kHitChanceHigh);
+					R->CastOnTarget(target);
 				}
 			}
 		}

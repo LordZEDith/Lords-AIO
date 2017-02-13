@@ -217,6 +217,7 @@
   <ItemGroup>
     <ClInclude Include="BaseMenu.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Lords Ezreal.h" />
     <ClInclude Include="Lords Kayle.h" />
     <ClInclude Include="Lords Darius.h" />
     <ClInclude Include="LordCommon.h" />

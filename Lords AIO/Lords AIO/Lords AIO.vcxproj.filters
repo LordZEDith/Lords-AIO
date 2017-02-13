@@ -101,5 +101,8 @@
     <ClInclude Include="Lords Tristana.h">
       <Filter>Header Files\ADC</Filter>
     </ClInclude>
+    <ClInclude Include="Lords Ezreal.h">
+      <Filter>Header Files\ADC</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
