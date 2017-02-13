@@ -8,6 +8,11 @@
 #include "Lords Sona.h"
 #include "Lords Diana.h"
 #include "Lords Warwick.h"
+#include "Lords Riven.h"
+#include "Lords Darius.h"
+#include "Lords Kayle.h"
+#include "Lords Tristana.h"
+
 
 #pragma region Events
 PLUGIN_EVENT(void) OnOrbwalkBeforeAttack(IUnit* Target)
@@ -68,8 +73,8 @@ public:
 	}
 	/*virtual void unLoad() override
 	{
-		Ahri().Menu();
-		Ahri().LoadSpells();
+	Ahri().Menu();
+	Ahri().LoadSpells();
 	}*/
 private:
 	void PrintAhriLoadMessage()
@@ -117,8 +122,8 @@ public:
 	}
 	/*virtual void unLoad() override
 	{
-		Malphite().Menu();
-		Malphite().LoadSpells();
+	Malphite().Menu();
+	Malphite().LoadSpells();
 	}*/
 private:
 	void MalphLoadMessage()
@@ -153,7 +158,7 @@ public:
 		}
 		Xerath().RunAlways();
 		Xerath().AutoE();
-		 
+
 	}
 	void AfterAttack(IUnit* Source, IUnit* Target) override
 	{
@@ -161,9 +166,9 @@ public:
 	}
 	/*virtual void unLoad() override
 	{
-		
-		Xerath().Menu();
-		Xerath().LoadSpells();
+
+	Xerath().Menu();
+	Xerath().LoadSpells();
 	}*/
 private:
 	void PrintXerathLoadMessage()
@@ -173,7 +178,7 @@ private:
 
 };
 
-class Reng: public IChampion
+class Reng : public IChampion
 {
 public:
 	virtual void OnLoad() override
@@ -198,7 +203,7 @@ public:
 		{
 			Rengar().Farm();
 		}
-		 
+
 
 	}
 	void OnGapCloser(GapCloserSpell const& Args) override
@@ -217,8 +222,8 @@ public:
 	}
 	/*virtual void unLoad() override
 	{
-		Rengar().Menu();
-		Rengar().LoadSpells();
+	Rengar().Menu();
+	Rengar().LoadSpells();
 	}*/
 private:
 	void MalphLoadMessage()
@@ -258,12 +263,12 @@ public:
 	}
 	void AfterAttack(IUnit* Source, IUnit* Target) override
 	{
-		 
+
 	}
 	/*virtual void unLoad() override
 	{
-		Rengar().Menu();
-		Rengar().LoadSpells();
+	Rengar().Menu();
+	Rengar().LoadSpells();
 	}*/
 private:
 	void SonaLoadMessage()
@@ -313,7 +318,7 @@ public:
 		Diana().StealR();
 
 	}
-	
+
 	void OnGapCloser(GapCloserSpell const& Args) override
 	{
 		//Diana().GapCloser(Args);
@@ -324,9 +329,9 @@ public:
 	}
 	/*virtual void unLoad() override
 	{
-		 
-		Diana().Menu();
-		Diana().LoadSpells();
+
+	Diana().Menu();
+	Diana().LoadSpells();
 	}*/
 private:
 	void DianaLoadMessage()
@@ -382,7 +387,140 @@ private:
 	}
 };
 
- 
+class Dar : public IChampion
+{
+public:
+	virtual void OnLoad() override
+	{
+		TopLaneSeries();
+		DariusLoadMessage();
+		Darius().Menu();
+		Darius().LoadSpells();
+	}
+	virtual void OnRender() override
+	{
+		Darius().Drawing();
+	}
+
+	virtual void OnGameUpdate() override
+	{
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			Darius().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			Darius().Farm();
+		}
+
+		Darius().Automatic();
+		Darius().Automatic2();
+	}
+	void OnGapCloser(GapCloserSpell const& Args) override
+	{
+
+	}
+	void AfterAttack(IUnit* Source, IUnit* Target) override
+	{
+
+	}
+private:
+	void DariusLoadMessage()
+	{
+		GGame->PrintChat("Darius detected...Loading script");
+	}
+};
+
+class Kay : public IChampion
+{
+public:
+	virtual void OnLoad() override
+	{
+		TopLaneSeries();
+		KayleLoadMessage();
+		Kayle().Menu();
+		Kayle().LoadSpells();
+	}
+	virtual void OnRender() override
+	{
+		Kayle().Drawing();
+	}
+
+	virtual void OnGameUpdate() override
+	{
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			Kayle().LogicQC();
+			Kayle().LogicEC();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			Kayle().LogicQH();
+			Kayle().LogicEH();
+		}
+		Kayle().Combo();
+	}
+	void OnGapCloser(GapCloserSpell const& Args) override
+	{
+
+	}
+	void AfterAttack(IUnit* Source, IUnit* Target) override
+	{
+
+	}
+private:
+	void KayleLoadMessage()
+	{
+		GGame->PrintChat("Kayle detected...Loading script");
+	}
+};
+
+class Trist : public IChampion
+{
+public:
+	virtual void OnLoad() override
+	{
+		ADCLaneSeries();
+		TristanaLoadMessage();
+		Tristana().Menu();
+		Tristana().LoadSpells();
+	}
+	virtual void OnRender() override
+	{
+		Tristana().Drawing();
+	}
+
+	virtual void OnGameUpdate() override
+	{
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			Tristana().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			Tristana().HarassE2();
+		}
+		Tristana().SelfR();
+		Tristana().Automatic();
+		Tristana().Automatic2();
+	}
+	void OnGapCloser(GapCloserSpell const& Args) override
+	{
+
+	}
+	void AfterAttack(IUnit* Source, IUnit* Target) override
+	{
+		Tristana().AfterAttack();
+	}
+private:
+	void TristanaLoadMessage()
+	{
+		GGame->PrintChat(" Tristana detected...Loading script");
+	}
+};
+
+
+
 IChampion* pChampion = nullptr;
 
 PLUGIN_EVENT(void) OnRender()
@@ -418,10 +556,16 @@ void LoadChampion()
 		pChampion = new Dian;
 	else if (szChampion == "Warwick")
 		pChampion = new War;
+	else if (szChampion == "Darius")
+		pChampion = new Dar;
+	else if (szChampion == "Kayle")
+		pChampion = new Kay;
+	else if (szChampion == "Tristana")
+		pChampion = new Trist;
 	else
 	{
 		GGame->PrintChat("Champion not supported!");
-	}	
+	}
 	if (pChampion != nullptr)
 	{
 		GEventManager->AddEventHandler(kEventOnRender, OnRender);
@@ -441,22 +585,21 @@ PLUGIN_API void OnLoad(IPluginSDK* PluginSDK)
 	pChampion->OnLoad();
 	GRender->NotificationEx(Color::LightBlue().Get(), 2, true, true, "Welcome to Lord's AIO");
 
-	
+
 }
 
 // Called when plugin is unloaded
 PLUGIN_API void OnUnload()
 {
-	 
-		//pChampion->unLoad();
-		MainMenu->Remove();
-	//	GEventManager->RemoveEventHandler(kEventOnRender, OnLoad);
-		GEventManager->RemoveEventHandler(kEventOnRender, OnRender);
-		GEventManager->RemoveEventHandler(kEventOnGapCloser, OnGapCloser);
-		GEventManager->RemoveEventHandler(kEventOrbwalkAfterAttack, AfterAttack);
-		GEventManager->RemoveEventHandler(kEventOnGameUpdate, OnGameUpdate);
-		
-	
-	
-}
 
+	//pChampion->unLoad();
+	MainMenu->Remove();
+	//	GEventManager->RemoveEventHandler(kEventOnRender, OnLoad);
+	GEventManager->RemoveEventHandler(kEventOnRender, OnRender);
+	GEventManager->RemoveEventHandler(kEventOnGapCloser, OnGapCloser);
+	GEventManager->RemoveEventHandler(kEventOrbwalkAfterAttack, AfterAttack);
+	GEventManager->RemoveEventHandler(kEventOnGameUpdate, OnGameUpdate);
+
+
+
+}

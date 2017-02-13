@@ -3,9 +3,6 @@
 #include "Color.h"
 #include "BaseMenu.h"
 
- 
-
-
 class Sona
 {
 public:

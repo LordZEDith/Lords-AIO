@@ -29,7 +29,7 @@ public:
 
 		ComboE = EMenu->CheckBox("Use E", true);
 		ComboEA = EMenu->CheckBox("Auto E when Enemy in Selected Range", true);
-		HarassManaE = EMenu->AddInteger("Auto E Range ", 0, 525, 515);
+		HarassManaE = EMenu->AddFloat("Auto E Range ", 0, 525, 515);
 
 
 		ComboR = RMenu->CheckBox("Use R(When u select it)", true);
@@ -135,7 +135,7 @@ public:
 		if (ComboEA->Enabled() && E->IsReady())
 		{
 
-			auto target = GTargetSelector->FindTarget(ClosestPriority, SpellDamage, HarassManaE->GetInteger());
+			auto target = GTargetSelector->FindTarget(ClosestPriority, SpellDamage, HarassManaE->GetFloat());
 			//	if (target != nullptr)
 
 			E->CastOnTarget(target,6);
@@ -175,7 +175,7 @@ public:
 
 			if (E->IsReady() && DrawE->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), E->Range()); }
 
-			if (E->IsReady() && DrawEA->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), HarassManaE->GetInteger()); }
+			if (E->IsReady() && DrawEA->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), HarassManaE->GetFloat()); }
 
 			if (W->IsReady() && DrawW->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), W->Range()); }
 
@@ -186,7 +186,7 @@ public:
 
 			if (DrawE->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), E->Range()); }
 
-			if (DrawEA->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), HarassManaE->GetInteger()); }
+			if (DrawEA->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), HarassManaE->GetFloat()); }
 
 			if (DrawW->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), W->Range()); }
 			 

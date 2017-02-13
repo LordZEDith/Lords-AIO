@@ -4,11 +4,6 @@
 #include "PluginSDK.h"
 #include "BaseMenu.h"
 
-
- 
-
-
-
 class Ahri
 {
 public:
@@ -31,7 +26,7 @@ public:
 		ComboE = EMenu->CheckBox("Use E", true);
 
 		ComboR = RMenu->CheckBox("Auto R when enemies killable", true);
-		ComboREnemies = RMenu->AddInteger("Enemies Health %", 0, 100, 20);
+		ComboREnemies = RMenu->AddFloat("Enemies Health %", 0, 100, 20);
 		DrawReady = Drawings->CheckBox("Draw Only Ready Spells", true);
 
 		DrawQ = Drawings->CheckBox("Draw Q", true);
@@ -86,7 +81,7 @@ public:
 			if (R->IsReady())
 			{
 				auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, R->Range());
-				if (target->HealthPercent() <= ComboREnemies->GetInteger())
+				if (target->HealthPercent() <= ComboREnemies->GetFloat())
 				{
 					R->CastOnTarget(target, kHitChanceHigh);
 				}

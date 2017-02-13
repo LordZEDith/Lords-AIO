@@ -8,6 +8,9 @@ ISpell2* E;
 ISpell2* R;
 
 IMenu* MainMenu;
+IMenu* HarassMenu;
+IMenu* ComboMenu;
+IMenu* Misc;
 IMenu* QMenu;
 IMenu* WMenu;
 IMenu* EMenu;
@@ -15,7 +18,7 @@ IMenu* RMenu;
 IMenu* Miscs;
 IMenu* Drawings;
 IMenu* Drawingss;
- 
+
 IMenuOption* ComboQ;
 IMenuOption* AutoQ;
 IMenuOption* FarmQ;
@@ -31,6 +34,7 @@ IMenuOption* LastHitQ;
 
 
 IMenuOption* ComboW;
+IMenuOption* HarassW;
 IMenuOption* FarmW;
 IMenuOption* HarassManaW;
 IMenuOption* LaneClearW;
@@ -48,9 +52,11 @@ IMenuOption* EGapCloser;
 IMenuOption* ComboR;
 IMenuOption* ComboRKill;
 IMenuOption* ComboREnemies;
+IMenuOption* REnemies;
 IMenuOption* AutoUlt;
 IMenuOption* UltEnemies;
 IMenuOption* UltPercent;
+IMenuOption* UltPercent2;
 IMenuOption* LaneClearR;
 
 IMenuOption* DrawReady;
@@ -72,14 +78,14 @@ IMenuOption* UseItems;
 IMenuOption* AutoSmites;
 
 
- 
+
 
 IInventoryItem* Tiamat;
 IInventoryItem* Hydra;
 IInventoryItem* Ravenous;
 
 
- 
+
 
  
 

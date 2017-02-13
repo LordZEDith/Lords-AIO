@@ -31,7 +31,7 @@ public:
 		HarassMana = EMenu->AddInteger("Mana Manager(%)", 1, 100, 60);
 
 		ComboR = RMenu->CheckBox("R When Enemy Health % ", true);
-		UltPercent = WMenu->AddInteger("Enemy Health (%)", 1, 100, 60);
+		UltPercent = WMenu->AddFloat("Enemy Health (%)", 1, 100, 60);
 
 			UseItems = Miscs->CheckBox("Use Items in Combo", true);
 
@@ -121,11 +121,11 @@ public:
 				auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, R->Range());
 				int enemies = 0;
 				Vec3 pos = Vec3();
-				R->FindBestCastPosition(false, true, pos, enemies);
-				if (enemies >= 1)
-					if (!(target->HasBuffOfType(BUFF_SpellShield)) && (target->HealthPercent() <= UltPercent->GetInteger()))
+				//R->FindBestCastPosition(false, true, pos, enemies);
+				if (enemies == 1)
+					if (!(target->HasBuffOfType(BUFF_SpellShield)) && (target->HealthPercent() <= UltPercent->GetFloat()))
 					{
-						R->CastOnPosition(pos);
+						R->CastOnTarget(target, 6);
 					}
 			}
 		}
