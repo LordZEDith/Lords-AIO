@@ -158,11 +158,17 @@ public:
 	{
 		if (R->IsReady() && ComboR->Enabled())
 		{
-			auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, R->Range());
-			if (CastingR() == true)
+			for (auto enemy : GEntityList->GetAllHeros(false, true))
 			{
-				R->CastOnTarget(target, 5);
+				if (enemy->IsEnemy(GEntityList->Player()) && (GEntityList->Player()->GetPosition() - enemy->GetPosition()).Length() <= R->Range())
+				{
+					//auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, R->Range());
+					if (CastingR() == true)
+					{
+						R->CastOnTarget(enemy, 5);
 
+					}
+				}
 			}
 		}
 	}

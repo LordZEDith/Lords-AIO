@@ -87,7 +87,7 @@ public:
 			if (enemy != nullptr && enemy->GetTeam() != GEntityList->Player()->GetTeam())
 			{
 				auto flDistance = (enemy->GetPosition() - GEntityList->Player()->GetPosition()).Length();
-				if (flDistance < range)
+				if (flDistance < range)	
 				{
 					enemiesInRange++;
 				}
