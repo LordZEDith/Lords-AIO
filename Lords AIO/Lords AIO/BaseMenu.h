@@ -10,6 +10,7 @@ ISpell2* R;
 IMenu* MainMenu;
 IMenu* HarassMenu;
 IMenu* ComboMenu;
+IMenu* KillStealMenu;
 IMenu* Misc;
 IMenu* QMenu;
 IMenu* WMenu;
@@ -18,6 +19,10 @@ IMenu* RMenu;
 IMenu* Miscs;
 IMenu* Drawings;
 IMenu* Drawingss;
+IMenu* DmgInd;
+IMenu* Keystones;
+IMenu* AutoLevelers;
+IMenu* InfoText;
 
 IMenuOption* ComboQ;
 IMenuOption* AutoQ;
@@ -31,8 +36,6 @@ IMenuOption* QGapCloser;
 IMenuOption* LaneClearQ;
 IMenuOption* LastHitQ;
 
-
-
 IMenuOption* ComboW;
 IMenuOption* HarassW;
 IMenuOption* FarmW;
@@ -40,6 +43,7 @@ IMenuOption* HarassManaW;
 IMenuOption* LaneClearW;
 
 IMenuOption* ComboE;
+IMenuOption* ComboE2;
 IMenuOption* ComboEA;
 IMenuOption* HarassE;
 IMenuOption* HarassManaE;
@@ -65,6 +69,7 @@ IMenuOption* DrawW;
 IMenuOption* DrawE;
 IMenuOption* DrawEA;
 IMenuOption* DrawR;
+IMenuOption* DrawR2;
 
 
 IMenuOption* HealthPercent;
@@ -77,15 +82,43 @@ IMenuOption* ComboAA;
 IMenuOption* UseItems;
 IMenuOption* AutoSmites;
 
+IMenuOption* QD;
+IMenuOption* WD;
+IMenuOption* ED;
+IMenuOption* RD;
+IMenuOption* IG;
+IMenuOption* Thunderlords;
+IMenuOption* Fervor;
+IMenuOption* ColorR;
+IMenuOption* ColorG;
+IMenuOption* ColorB;
+IMenuOption* AA;
 
+IMenuOption* AutoLevelerCheck;
+IMenuOption* AutoLevelerStart;
+IMenuOption* AutoLevel1;
+IMenuOption* AutoLevel2;
+IMenuOption* AutoLevel3;
+IMenuOption* AutoLevel4;
 
+IMenuOption* Teamate1;
+IMenuOption* Teamate2;
+IMenuOption* Teamate3;
+IMenuOption* Teamate4;
+IMenuOption* Teamate5;
 
 IInventoryItem* Tiamat;
 IInventoryItem* Hydra;
 IInventoryItem* Ravenous;
 
+Vec2 HeroCoordsVec2;
 
 
+IUnit* Teamate01;
+IUnit* Teamate02;
+IUnit* Teamate03;
+IUnit* Teamate04;
+IUnit* Teamate05;
 
  
 

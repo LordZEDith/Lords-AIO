@@ -4,7 +4,7 @@
  
 
 
-// Lord's Xerath.cpp : Defines the exported functions for the DLL application.
+	// Lord's Xerath.cpp : Defines the exported functions for the DLL application.
 
 
 class Xerath
@@ -90,7 +90,7 @@ public:
 				auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, Q->Range());
 
 
-				if (GetEnemiesInRange(1550) >= 1)
+				if (target != nullptr && !target->IsDead() && !target->IsInvulnerable()  && GetEnemiesInRange(1550) >= 1 && target->IsValidTarget(target, Q->Range()) )
 				{
 					Q->StartCharging();
 				}

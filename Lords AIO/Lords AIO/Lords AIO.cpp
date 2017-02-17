@@ -1,5 +1,6 @@
 #include "PluginSDK.h"
 #include "TextHeader.h"
+#include "Version Checker.h"
 #include "Color.h"
 #include "Lords Ahri.h"
 #include "Lords Malphite.h"
@@ -12,6 +13,8 @@
 #include "Lords Darius.h"
 #include "Lords Kayle.h"
 #include "Lords Tristana.h"
+#include "Lords Varus.h"
+#include "AutoLeveler.h"
 
 
 #pragma region Events
@@ -33,6 +36,7 @@ public:
 	virtual void OnGameUpdate() = 0;
 	virtual void AfterAttack(IUnit * Source, IUnit * Target) = 0;
 	virtual void OnGapCloser(GapCloserSpell const& Args) = 0;
+	virtual void OnLevelUp(IUnit* Source, int NewLevel) = 0;
 	virtual void OnRender() = 0;
 	virtual void OnLoad() = 0;
 	//virtual void unLoad() = 0;
@@ -71,11 +75,10 @@ public:
 	{
 
 	}
-	/*virtual void unLoad() override
+	void OnLevelUp(IUnit* Source, int NewLevel) override
 	{
-	Ahri().Menu();
-	Ahri().LoadSpells();
-	}*/
+		
+	}
 private:
 	void PrintAhriLoadMessage()
 	{
@@ -120,11 +123,10 @@ public:
 	{
 
 	}
-	/*virtual void unLoad() override
+	void OnLevelUp(IUnit* Source, int NewLevel) override
 	{
-	Malphite().Menu();
-	Malphite().LoadSpells();
-	}*/
+
+	}
 private:
 	void MalphLoadMessage()
 	{
@@ -164,12 +166,10 @@ public:
 	{
 
 	}
-	/*virtual void unLoad() override
+	void OnLevelUp(IUnit* Source, int NewLevel) override
 	{
 
-	Xerath().Menu();
-	Xerath().LoadSpells();
-	}*/
+	}
 private:
 	void PrintXerathLoadMessage()
 	{
@@ -220,11 +220,10 @@ public:
 			}
 		}
 	}
-	/*virtual void unLoad() override
+	void OnLevelUp(IUnit* Source, int NewLevel) override
 	{
-	Rengar().Menu();
-	Rengar().LoadSpells();
-	}*/
+
+	}
 private:
 	void MalphLoadMessage()
 	{
@@ -265,11 +264,10 @@ public:
 	{
 
 	}
-	/*virtual void unLoad() override
+	void OnLevelUp(IUnit* Source, int NewLevel) override
 	{
-	Rengar().Menu();
-	Rengar().LoadSpells();
-	}*/
+
+	}
 private:
 	void SonaLoadMessage()
 	{
@@ -327,12 +325,10 @@ public:
 	{
 
 	}
-	/*virtual void unLoad() override
+	void OnLevelUp(IUnit* Source, int NewLevel) override
 	{
 
-	Diana().Menu();
-	Diana().LoadSpells();
-	}*/
+	}
 private:
 	void DianaLoadMessage()
 	{
@@ -380,6 +376,10 @@ public:
 	{
 
 	}
+	void OnLevelUp(IUnit* Source, int NewLevel) override
+	{
+
+	}
 private:
 	void WarwickLoadMessage()
 	{
@@ -421,6 +421,10 @@ public:
 
 	}
 	void AfterAttack(IUnit* Source, IUnit* Target) override
+	{
+
+	}
+	void OnLevelUp(IUnit* Source, int NewLevel) override
 	{
 
 	}
@@ -468,6 +472,10 @@ public:
 	{
 
 	}
+	void OnLevelUp(IUnit* Source, int NewLevel) override
+	{
+	
+	}
 private:
 	void KayleLoadMessage()
 	{
@@ -488,6 +496,7 @@ public:
 	virtual void OnRender() override
 	{
 		Tristana().Drawing();
+
 	}
 
 	virtual void OnGameUpdate() override
@@ -512,6 +521,10 @@ public:
 	{
 		Tristana().AfterAttack();
 	}
+	void OnLevelUp(IUnit* Source, int NewLevel) override
+	{
+
+	}
 private:
 	void TristanaLoadMessage()
 	{
@@ -519,6 +532,68 @@ private:
 	}
 };
 
+class Var : public IChampion
+{
+public:
+	virtual void OnLoad() override
+	{
+		ADCLaneSeries();
+		VarusLoadMessage();
+		Varus().Menu();
+		Varus().LoadSpells();
+	}
+	virtual void OnRender() override
+	{
+		Varus().Drawing();
+
+	}
+
+	virtual void OnGameUpdate() override
+	{
+		if (GEntityList->Player()->IsDead() && GEntityList->Player()->IsRecalling())
+		{
+			return;
+	     }
+		
+			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+			{
+				Varus().Combo();
+			}
+			if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+			{
+				Varus().Harass();
+			}
+			if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+			{
+				Varus().FarmHarass();
+				Varus().LaneClear();
+				Varus().JungleClear();
+			}
+			Varus().SemiRLogic();
+			Varus().AutoHarass();
+			Varus().KillSteal();
+
+		
+		 
+	}
+	void OnGapCloser(GapCloserSpell const& Args) override
+	{
+
+	}
+	void AfterAttack(IUnit* Source, IUnit* Target) override
+	{
+		
+	}
+	void OnLevelUp(IUnit* Source, int NewLevel) override
+	{
+
+	}
+private:
+	void VarusLoadMessage()
+	{
+		GGame->PrintChat(" Varus detected...Loading script");
+	}
+};
 
 
 IChampion* pChampion = nullptr;
@@ -539,6 +614,10 @@ PLUGIN_EVENT(void) OnGapCloser(GapCloserSpell const& Args)
 PLUGIN_EVENT(void) AfterAttack(IUnit* Source, IUnit* Target)
 {
 	pChampion->AfterAttack(Source, Target);
+}
+PLUGIN_EVENT(void) OnLevelUp(IUnit* Source, int NewLevel)
+{
+		
 }
 void LoadChampion()
 {
@@ -562,16 +641,22 @@ void LoadChampion()
 		pChampion = new Kay;
 	else if (szChampion == "Tristana")
 		pChampion = new Trist;
+	else if (szChampion == "Varus")
+		pChampion = new Var;
 	else
 	{
-		GGame->PrintChat("Champion not supported!");
+		GGame->PrintChat("Champion Not Supported");
 	}
+	
+	
+	
 	if (pChampion != nullptr)
 	{
 		GEventManager->AddEventHandler(kEventOnRender, OnRender);
 		GEventManager->AddEventHandler(kEventOnGapCloser, OnGapCloser);
 		GEventManager->AddEventHandler(kEventOrbwalkAfterAttack, AfterAttack);
 		GEventManager->AddEventHandler(kEventOnGameUpdate, OnGameUpdate);
+		GEventManager->AddEventHandler(kEventOnLevelUp, OnLevelUp);
 	}
 }
 
@@ -580,18 +665,16 @@ PLUGIN_API void OnLoad(IPluginSDK* PluginSDK)
 {
 	// Initializes global interfaces for core access
 	PluginSDKSetup(PluginSDK);
-
 	LoadChampion();
 	pChampion->OnLoad();
 	GRender->NotificationEx(Color::LightBlue().Get(), 2, true, true, "Welcome to Lord's AIO");
-
+	
 
 }
 
 // Called when plugin is unloaded
 PLUGIN_API void OnUnload()
 {
-
 	//pChampion->unLoad();
 	MainMenu->Remove();
 	//	GEventManager->RemoveEventHandler(kEventOnRender, OnLoad);
@@ -599,7 +682,6 @@ PLUGIN_API void OnUnload()
 	GEventManager->RemoveEventHandler(kEventOnGapCloser, OnGapCloser);
 	GEventManager->RemoveEventHandler(kEventOrbwalkAfterAttack, AfterAttack);
 	GEventManager->RemoveEventHandler(kEventOnGameUpdate, OnGameUpdate);
-
-
+	GEventManager->RemoveEventHandler(kEventOnLevelUp, OnLevelUp);
 
 }

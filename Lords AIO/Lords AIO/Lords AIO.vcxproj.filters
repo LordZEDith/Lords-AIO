@@ -34,6 +34,9 @@
     <Filter Include="Header Files\Custom">
       <UniqueIdentifier>{e7006e38-1fa6-4d2a-bcbe-0e49ff29fec2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utility">
+      <UniqueIdentifier>{3b8bab0f-663a-461e-90e0-d3d7caa041d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PluginSDK.cpp">
@@ -103,6 +106,15 @@
     </ClInclude>
     <ClInclude Include="Lords Ezreal.h">
       <Filter>Header Files\ADC</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoLeveler.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Lords Varus.h">
+      <Filter>Header Files\ADC</Filter>
+    </ClInclude>
+    <ClInclude Include="Version Checker.h">
+      <Filter>Header Files\Custom</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

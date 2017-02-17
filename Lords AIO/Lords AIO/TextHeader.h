@@ -22,3 +22,7 @@ void ADCLaneSeries()
 {
 	GRender->NotificationEx(Color::LightRed().Get(), 2, true, true, ("ADC Series Loaded"));
 }
+void AutoLevels()
+{
+	GRender->NotificationEx(Color::LightRed().Get(), 2, true, true, ("Auto Leveler Loaded Thanks to Krohdo / Dewblackio2"));
+}

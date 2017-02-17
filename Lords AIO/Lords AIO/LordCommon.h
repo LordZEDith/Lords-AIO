@@ -61,6 +61,13 @@ double GetRDamage(IUnit* target)
 	return BaseDamage;
 }
 
+bool InFountain(IUnit* Source)
+{
+	if (Source->GetPosition().x < 1276 && Source->GetPosition().z < 1344) { return true; }
+	if (Source->GetPosition().x > 13540 && Source->GetPosition().z > 13470) { return true; }
+
+	return false;
+}
 
 
 bool IsUnderTurret(IUnit* source)
@@ -85,6 +92,25 @@ int GetEnemiesInRange(float range)
 	return enemies;
 }
 
+ int GetMinionsInRange(Vec3 Position, float Range)
+{
+	auto mingons = GEntityList->GetAllMinions(false, true, false);
+	auto mingonsInRange = 0;
+	for (auto mingon : mingons)
+	{
+		//counts enemies checking if they are enemy heroes and are within radius parameter
+		if (mingon != nullptr && mingon->IsValidTarget() && !mingon->IsDead())
+		{
+			auto mingonDistance = (mingon->GetPosition() - Position).Length();
+			if (mingonDistance < Range)
+			{
+				mingonsInRange++;
+			}
+		}
+	}
+	return mingonsInRange;
+}
+
 float GetDistance(IUnit* source, IUnit* target)
 {
 	auto x1 = source->GetPosition().x;
@@ -94,4 +120,8 @@ float GetDistance(IUnit* source, IUnit* target)
 	auto z1 = source->GetPosition().z;
 	auto z2 = target->GetPosition().z;
 	return static_cast<float>(sqrt(pow((x2 - x1), 2.0) + pow((y2 - y1), 2.0) + pow((z2 - z1), 2.0)));
+}
+static bool IsKeyDown(IMenuOption *menuOption)
+{
+	return GetAsyncKeyState(menuOption->GetInteger()) & 0x8000;
 }

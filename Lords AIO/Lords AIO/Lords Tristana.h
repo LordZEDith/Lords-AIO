@@ -3,6 +3,7 @@
 #include "BaseMenu.h"
 #include "LordCommon.h"
 
+
 class Tristana
 {
 public:
@@ -15,6 +16,7 @@ public:
 		EMenu = MainMenu->AddMenu("E Settings");
 		RMenu = MainMenu->AddMenu("R Settings");
 		Drawings = MainMenu->AddMenu("Drawings");
+	
 
 		ComboQ = QMenu->CheckBox("Use Q", true);
 		ComboQH = QMenu->CheckBox("Use Q | Only target Have E Buff", true);
@@ -39,7 +41,9 @@ public:
 		DrawW = Drawings->CheckBox("Draw W", true);
 		DrawE = Drawings->CheckBox("Draw E", true);
 		DrawR = Drawings->CheckBox("Draw R", true);
-		DrawReady = Drawings->CheckBox("Draw R Before USE", true);
+		DrawR2 = Drawings->CheckBox("Draw R Before USE", true);
+
+	
 	}
 	void LoadSpells()
 	{
@@ -56,6 +60,8 @@ public:
 		Q->SetOverrideSpeed(1400);
 	}
 	
+	
+
 	void Combo()
 	{
 		
@@ -161,8 +167,10 @@ public:
 			}
 		}
 	}
+	
 	void Drawing()
 	{
+		
 		if (DrawReady->Enabled())
 		{
 			if (Q->IsReady() && DrawQ->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), Q->Range()); }
@@ -173,7 +181,7 @@ public:
 
 			if (R->IsReady() && DrawR->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), R->Range()); }
 
-			if (R->IsReady() && DrawReady->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), REnemies->GetFloat()); }
+			if (R->IsReady() && DrawR2->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), REnemies->GetFloat()); }
 		}
 		else
 		{
@@ -185,8 +193,9 @@ public:
 
 			if (DrawR->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), R->Range()); }
 
-			if (DrawReady->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), REnemies->GetFloat()); }
+			if (DrawR2->Enabled()) { GRender->DrawOutlinedCircle(GEntityList->Player()->GetPosition(), Vec4(255, 255, 0, 255), REnemies->GetFloat()); }
 		}
 	}
+	
 
 };

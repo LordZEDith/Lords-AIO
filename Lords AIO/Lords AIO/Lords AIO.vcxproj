@@ -228,13 +228,16 @@
     <ClInclude Include="Lords Riven.h" />
     <ClInclude Include="Lords Sona.h" />
     <ClInclude Include="Lords Tristana.h" />
+    <ClInclude Include="Lords Varus.h" />
     <ClInclude Include="Lords Warwick.h" />
     <ClInclude Include="Lords Xerath.h" />
     <ClInclude Include="LPPConstants.h" />
+    <ClInclude Include="AutoLeveler.h" />
     <ClInclude Include="PluginData.h" />
     <ClInclude Include="PluginSDK.h" />
     <ClInclude Include="TextHeader.h" />
     <ClInclude Include="Vector3.h" />
+    <ClInclude Include="Version Checker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
