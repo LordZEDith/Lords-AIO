@@ -60,7 +60,7 @@ public:
 	}
 	void LoadSpells()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, false, false, static_cast<eCollisionFlags>(kCollidesWithNothing));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, false, false, static_cast<eCollisionFlags>(kCollidesWithYasuoWall));
 		Q->SetCharged(925.f, 1600.f, 1.5f);
 		W = GPluginSDK->CreateSpell2(kSlotW, kTargetCast, false, false, static_cast<eCollisionFlags>(kCollidesWithNothing));
 		E = GPluginSDK->CreateSpell2(kSlotE, kCircleCast, false, true, static_cast<eCollisionFlags>(kCollidesWithYasuoWall));
@@ -82,7 +82,7 @@ public:
 	int GetEnemiesInRange2(float range)
 	{
 		auto enemies = GEntityList->GetAllHeros(false, true);
-		auto enemiesInRange = 0;
+		auto enemiesInRange = 1;
 
 		for (auto enemy : enemies)
 		{
