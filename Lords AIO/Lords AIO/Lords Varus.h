@@ -3,8 +3,6 @@
 #include "BaseMenu.h"
 #include "LordCommon.h"
 
-
-
 class Varus
 {
 public:
@@ -102,7 +100,7 @@ public:
 		if (target != nullptr && Q->IsReady() && !target->IsDead())
 		{
 			//target = GTargetSelector->FindTarget(QuickestKill,PhysicalDamage, Q->Range());
-			if (target != nullptr && !target->IsInvulnerable() && GetEnemiesInRange2(1600) >= 1 && target->IsValidTarget(target, Q->Range()))
+			if (target != nullptr && !target->IsInvulnerable() && GetEnemiesInRange2(1600) >= 1 && GEntityList->Player()->IsValidTarget(target, Q->Range()))
 			{
 				Q->StartCharging();
 			}
@@ -125,7 +123,7 @@ public:
 		//auto target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 
 
-		if (target != nullptr && !target->IsDead() && !target->IsInvulnerable() && GetEnemiesInRange2(1600) >= 1 && target->IsValidTarget(target, Q->Range()))
+		if (target != nullptr && !target->IsDead() && !target->IsInvulnerable() && GetEnemiesInRange2(1600) >= 1 && GEntityList->Player()->IsValidTarget(target, Q->Range()))
 		{
 			Q->StartCharging();
 		}
@@ -143,7 +141,7 @@ public:
 			{
 			auto target = GTargetSelector->GetFocusedTarget()!= nullptr ? GTargetSelector->GetFocusedTarget(): 
 					GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, R->Range());
-			if (target != nullptr &&  target->IsValidTarget(target, R->Range()))
+			if (target != nullptr &&  GEntityList->Player()->IsValidTarget(target, R->Range()))
 			{
 				R->CastOnTarget(target, 5);
 			}
@@ -169,7 +167,7 @@ public:
 		auto target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 		if (GEntityList->Player()->ManaPercent() >= HarassManaQ->GetFloat())
 		{		
-			if (target != nullptr && !target->IsDead() && target->IsValidTarget(target, Q->Range()) && target->IsEnemy(GEntityList->Player()) && GetDistance(GEntityList->Player(), target) <= Q->Range())
+			if (target != nullptr && !target->IsDead() && GEntityList->Player()->IsValidTarget(target, Q->Range()) && target->IsEnemy(GEntityList->Player()) && GetDistance(GEntityList->Player(), target) <= Q->Range())
 			{
 				if (ComboE2->Enabled())
 				{
@@ -178,7 +176,7 @@ public:
 				}
 			}
 
-			if (target != nullptr && ComboW->Enabled() && E->IsReady() && target->IsValidTarget(target,E->Range()))
+			if (target != nullptr && ComboW->Enabled() && E->IsReady() && GEntityList->Player()->IsValidTarget(target,E->Range()))
 			{
 				E->CastOnTarget(target, 5);
 			}
@@ -226,9 +224,9 @@ public:
 	{
 		auto target = GTargetSelector->GetFocusedTarget() != nullptr ? GTargetSelector->GetFocusedTarget() :
 			GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		if (target != nullptr && target->IsValidTarget(target, Q->Range()) && !target->IsInvulnerable() && !target->IsDead())
+		if (target != nullptr && GEntityList->Player()->IsValidTarget(target, Q->Range()) && !target->IsInvulnerable() && !target->IsDead())
 		{
-			if (ComboR->Enabled() && R->IsReady() && target->IsValidTarget(target, R->Range()))
+			if (ComboR->Enabled() && R->IsReady() && GEntityList->Player()->IsValidTarget(target, R->Range()))
 			{
 				if (LaneClearQ->Enabled() && R->IsReady() && GetEnemiesInRange2(1000) <= 2)
 				{
@@ -244,7 +242,7 @@ public:
 				}
 					
 			}
-			if (ComboQ->Enabled() && target->IsValidTarget(target, Q->Range()))
+			if (ComboQ->Enabled() && GEntityList->Player()->IsValidTarget(target, Q->Range()))
 			{
 				
 					if ( GEntityList->Player()->IsValidTarget(target, Q->Range()) || (GEntityList->Player()->GetPosition() - target->GetPosition()).Length() > GEntityList->Player()->GetRealAutoAttackRange(GEntityList->Player()) + 200 || GetPassiveCount(target) >= QEnemies1->GetFloat() || GEntityList->Player()->GetSpellLevel(kSlotW) == 0 || target->GetHealth() < GDamage->GetSpellDamage(GEntityList->Player(), target, kSlotQ))
@@ -259,7 +257,7 @@ public:
 					}
 				}
 			
-			if (ComboE->Enabled() && target->IsValidTarget(target, E->Range()))
+			if (ComboE->Enabled() && GEntityList->Player()->IsValidTarget(target, E->Range()))
 			{
 				if (GetPassiveCount(target) >= QEnemies1->GetFloat() || GEntityList->Player()->GetSpellLevel(kSlotW) == 0 || target->GetHealth() < GDamage->GetSpellDamage(GEntityList->Player(), target, kSlotQ))
 				{

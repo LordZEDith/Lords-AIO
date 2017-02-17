@@ -90,7 +90,7 @@ public:
 				auto target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, Q->Range());
 
 
-				if (target != nullptr && !target->IsDead() && !target->IsInvulnerable()  && GetEnemiesInRange(1550) >= 1 && target->IsValidTarget(target, Q->Range()) )
+				if (target != nullptr && !target->IsDead() && !target->IsInvulnerable()  && GetEnemiesInRange(1550) >= 1 && GEntityList->Player()->IsValidTarget(target, Q->Range()) )
 				{
 					Q->StartCharging();
 				}
