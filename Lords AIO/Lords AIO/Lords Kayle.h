@@ -1,4 +1,4 @@
-#pragma once
+ #pragma once
 #include "PluginSDK.h"
 #include "BaseMenu.h"
 #include "LordCommon.h"
@@ -24,7 +24,6 @@ public:
 		HealthPercent = WMenu->AddFloat("W(Self) on X Health %", 0, 100, 30);
 		UltPercent = WMenu->AddFloat("W(Self & Allies) on X Health %", 0, 100, 30);
 		
-
 		ComboE = EMenu->CheckBox("Auto E", false);
 		HarassE = EMenu->CheckBox("Harass E", false);
 
@@ -32,8 +31,6 @@ public:
 	    ComboRKill = RMenu->CheckBox("Allies R", false);
 		ComboREnemies = RMenu->AddFloat("R Self Health %", 0, 100, 20);
 		UltPercent2 = RMenu->AddFloat("R (Allies & Self) Health %", 0, 100, 15);
-
-
 
 		DrawReady = Drawings->CheckBox("Draw Only Ready Spells", false);
 		DrawQ = Drawings->CheckBox("Draw Q", false);

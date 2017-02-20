@@ -177,7 +177,7 @@ private:
 	void PrintXerathLoadMessage()
 	{
 		GGame->PrintChat("Xerath detected...Loading script");
-	}
+	}	
 
 };
 
@@ -668,6 +668,7 @@ PLUGIN_API void OnLoad(IPluginSDK* PluginSDK)
 {
 	// Initializes global interfaces for core access
 	PluginSDKSetup(PluginSDK);
+	RunVersionChecker();
 	LoadChampion();
 	pChampion->OnLoad();
 	GRender->NotificationEx(Color::LightBlue().Get(), 2, true, true, "Welcome to Lord's AIO");

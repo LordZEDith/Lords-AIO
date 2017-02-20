@@ -4,10 +4,11 @@
 bool VersionChecker()
 {
 	std::string szData;
-	if (GPluginSDK->ReadFileFromURL("https://raw.githubusercontent.com/LordZEDith/Lords-AIO/master/Version%20Checker/Lords%20AIO.txt", szData))
+	if (GPluginSDK->ReadFileFromURL("leagueplus.000webhostapp.com/Lords_AIO.txt", szData))
 	{
+	
 		auto n = szData.find("LocalVersion = ");
-
+		
 		if (n != szData.npos)
 		{
 			n += 15;
@@ -28,15 +29,30 @@ bool VersionChecker()
 	return true; // Failed to read web page, just return true...
 }
 
-void RunVersionChecker()
+static void RunVersionChecker()
 {
 	if (VersionChecker() == true)
 	{
-		GRender->NotificationEx(Color::LightBlue().Get(), 2, true, true, "You have latest Version");
+		/*GGame->Projection(GEntityList->Player()->GetPosition(), &HeroCoordsVec2);
+		auto champx = HeroCoordsVec2.x;
+		auto champy = HeroCoordsVec2.y;
+		static auto message = GRender->CreateFontW("Impact", 30.f, kFontWeightNormal);
+		message->SetColor(Vec4(255, 0, 0, 255));
+		message->SetOutline(true);
+		message->Render(champx - 55 * 5, champy - 200, "VersionChecker: You Have The Latest Version");*/
+		 GRender->NotificationEx(Vec4(25, 188, 33, 1), 20, false, true, "VersionChecker: You Have The Latest Version");
 	}
 	else
 	{
-		GRender->NotificationEx(Color::LightBlue().Get(), 2, true, true, "You have an Old Version Go Download Latest Plugin");
+		/*GGame->Projection(GEntityList->Player()->GetPosition(), &HeroCoordsVec2);
+		auto champx = HeroCoordsVec2.x;
+		auto champy = HeroCoordsVec2.y;
+		static auto message = GRender->CreateFontW("Impact", 30.f, kFontWeightNormal);
+		message->SetColor(Vec4(188, 33, 25, 1));
+		message->SetOutline(true);
+		message->Render(champx - 55 * 5, champy - 200, "VersionChecker: You Have An old Version");*/
+		GRender->NotificationEx(Vec4(200, 18, 18, 1), 20, false, true, "VersionChecker: You Have An Older Version");
 	}
+	
 }
 
